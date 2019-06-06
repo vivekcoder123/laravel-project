@@ -96,7 +96,7 @@
 
     <div class="row" style="margin-top:40px;padding:40px;">
 
-        <div class="flex-center"><h2><u>Welcome To HomePage</u></h2></div>
+        <div class="flex-center"><h2><u>Welcome To HomePage 2</u></h2></div>
 
         <div class="col-md-12">
 
