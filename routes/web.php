@@ -1,11 +1,13 @@
 <?php
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'HomeController@index')->name('homepage');
 
 
 Route::group(['middleware'=>['auth']],function(){
 
 Route::get('/admin','HomeController@admin');
+Route::get('/admin/operations','HomeController@operations')->name('admin.operations');
+Route::get('/admin/license-history','HomeController@licenseHistory')->name('admin.licenseHistory');
 Route::resource('/admin/posts','AdminPostsController',['names'=>[
 
   'index'=>'admin.posts.index',
