@@ -8,13 +8,15 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                 <div class="m-4">
-                {!!$pie->html() !!}
-                <div id="operationTableDiv">
-                <table class="table table-bordered table-striped" id="operationTable">
+                {!!$pieE->html() !!}
+                <div id="errorTableDiv">
+                <table class="table table-bordered table-striped" id="errorTable">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Type</th>
+                            <th>Details</th>
+                            <th>Description</th>
                             <th>Server Id</th>
                             <th>User</th>
                             <th>Created</th>
@@ -22,14 +24,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($allOperations as $operation)
+                    @foreach($allErrors as $error)
                         <tr>
-                            <td>{{$operation->id}}</td>
-                            <td style="white-space:nowrap;">{{$operation->type}}</td>
-                            <td>{{$operation->server_id}}</td>
-                            <td>{{$operation->user->name}}</td>
-                            <td>{{$operation->created_at->diffForHumans()}}</td>
-                            <td>{{$operation->updated_at->diffForHumans()}}</td>
+                            <td>{{$error->id}}</td>
+                            <td style="white-space:nowrap;">{{$error->type}}</td>
+                            <td>{{$error->details}}</td>
+                            <td>{{$error->description}}</td>
+                            <td>{{$error->server_id}}</td>
+                            <td>{{$error->user->name}}</td>
+                            <td>{{$error->created_at->diffForHumans()}}</td>
+                            <td>{{$error->updated_at->diffForHumans()}}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -43,7 +47,7 @@
 </div>
 {!! Charts::scripts() !!}
 
-{!! $pie->script() !!}
+{!! $pieE->script() !!}
 
 @endsection
 
@@ -55,10 +59,10 @@
     $(".highcharts-color-0").click(function(){
 
         $.ajax({
-        url: '{{url("/admin/operations/run")}}'
+        url: '{{url("/admin/operations/errors/fd")}}'
     })
     .done(function(res) {
-        $('#operationTableDiv').html(res);
+        $('#errorTableDiv').html(res);
     })
     .fail(function(err) {
         console.log(err);
@@ -68,17 +72,11 @@
 
     $(".highcharts-color-1").click(function(){
 
-     window.location.href = "{{URL::to('/admin/operations/errors')}}"
-
-    });
-
-    $(".highcharts-color-2").click(function(){
-
         $.ajax({
-        url: '{{url("/admin/operations/dnrun")}}'
+        url: '{{url("/admin/operations/errors/se")}}'
     })
     .done(function(res) {
-        $('#operationTableDiv').html(res);
+        $('#errorTableDiv').html(res);
     })
     .fail(function(err) {
         console.log(err);
@@ -86,7 +84,21 @@
 
     });
 
+    $(".highcharts-color-2").click(function(){
+
+        $.ajax({
+        url: '{{url("/admin/operations/errors/sna")}}'
     })
+    .done(function(res) {
+        $('#errorTableDiv').html(res);
+    })
+    .fail(function(err) {
+        console.log(err);
+    })
+
+    });
+
+});
     
 jQuery(function ($) {
 
