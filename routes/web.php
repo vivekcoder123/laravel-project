@@ -2,13 +2,12 @@
 
 Route::get('/', 'HomeController@index')->name('homepage');
 
-
 Route::group(['middleware'=>['auth']],function(){
 
 Route::get('/admin','HomeController@admin');
 Route::get('/admin/operations','AdminOperationsController@operations')->name('admin.operations');
-<<<<<<< HEAD
-Route::get('/admin/operations/{type}','AdminOperationsController@operationDetail')->name('admin.operationDetail');
+Route::get('/admin/operations/{type}','AdminOperationsController@operationDetail')
+->name('admin.operationDetail');
 
 Route::get('/admin/errors','AdminErrorsController@errors')->name('admin.errors');
 
@@ -23,13 +22,9 @@ Route::resource('/admin/licenses','AdminLicensesController',['names'=>[
   'destroy'=>'admin.licenses.destroy'
 
  ]]);
+
 Route::get('/admin/licenses/graph','AdminLicensesController@graph')->name('admin.licenses.graph');
-=======
-Route::get('/admin/operations/errors','AdminOperationsController@errors')->name('admin.errors');
-Route::get('/admin/operations/{type}','AdminOperationsController@operationDetail')->name('admin.operationDetail');
-Route::get('/admin/operations/errors/{type}','AdminOperationsController@errorDetail')->name('admin.errorDetail');
-Route::get('/admin/license-history','HomeController@licenseHistory')->name('admin.licenseHistory');
->>>>>>> origin/master
+
 Route::resource('/admin/posts','AdminPostsController',['names'=>[
 
   'index'=>'admin.posts.index',
@@ -39,6 +34,7 @@ Route::resource('/admin/posts','AdminPostsController',['names'=>[
   'destroy'=>'admin.posts.destroy'
 
  ]]);
+
 Route::resource('/admin/site-credentials','AdminSiteCredentialsController',['names'=>[
 
   'index'=>'admin.site-credentials.index',
@@ -48,6 +44,7 @@ Route::resource('/admin/site-credentials','AdminSiteCredentialsController',['nam
   'destroy'=>'admin.site-credentials.destroy'
 
  ]]);
+
 Route::resource('/admin/users','AdminUsersController',['names'=>[
 
   'index'=>'admin.users.index',

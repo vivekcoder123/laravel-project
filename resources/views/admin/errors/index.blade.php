@@ -8,7 +8,6 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                 <div class="m-4">
-<<<<<<< HEAD
                 <div class="filterationButtons mb-4 text-center">
                     <a class="btn btn-primary" href="{{route('admin.errors')}}">All Errors</a>
                     @foreach($errorsCategory as $category)
@@ -41,34 +40,6 @@
                             <td>{{$error->description}}</td>
                             <td>{{$error->user->name}}</td>
                             <td>{{$error->created_at->diffForHumans()}}</td>
-=======
-                {!!$pieE->html() !!}
-                <div id="errorTableDiv">
-                <table class="table table-bordered table-striped" id="errorTable">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Type</th>
-                            <th>Details</th>
-                            <th>Description</th>
-                            <th>Server Id</th>
-                            <th>User</th>
-                            <th>Created</th>
-                            <th>Updated</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($allErrors as $error)
-                        <tr>
-                            <td>{{$error->id}}</td>
-                            <td style="white-space:nowrap;">{{$error->type}}</td>
-                            <td>{{$error->details}}</td>
-                            <td>{{$error->description}}</td>
-                            <td>{{$error->server_id}}</td>
-                            <td>{{$error->user->name}}</td>
-                            <td>{{$error->created_at->diffForHumans()}}</td>
-                            <td>{{$error->updated_at->diffForHumans()}}</td>
->>>>>>> origin/master
                         </tr>
                     @endforeach
                     </tbody>
@@ -76,25 +47,15 @@
                 </div>
                 </div>
                 </div>
-<<<<<<< HEAD
-                </div>
-=======
->>>>>>> origin/master
             </div>
         </div>
     </div>
 </div>
-<<<<<<< HEAD
-=======
-{!! Charts::scripts() !!}
-
-{!! $pieE->script() !!}
->>>>>>> origin/master
+</div>
 
 @endsection
 
 @section('extra_js')
-<<<<<<< HEAD
 <script type="text/javascript">    
 jQuery(function ($) {
     $('#errorTable').DataTable();
@@ -118,59 +79,6 @@ jQuery(function ($) {
         });
         
     });
-=======
-
-<script type="text/javascript">
-    $(document).ready(function(){
-
-    $(".highcharts-color-0").click(function(){
-
-        $.ajax({
-        url: '{{url("/admin/operations/errors/fd")}}'
-    })
-    .done(function(res) {
-        $('#errorTableDiv').html(res);
-    })
-    .fail(function(err) {
-        console.log(err);
-    })
-
-    });
-
-    $(".highcharts-color-1").click(function(){
-
-        $.ajax({
-        url: '{{url("/admin/operations/errors/se")}}'
-    })
-    .done(function(res) {
-        $('#errorTableDiv').html(res);
-    })
-    .fail(function(err) {
-        console.log(err);
-    })
-
-    });
-
-    $(".highcharts-color-2").click(function(){
-
-        $.ajax({
-        url: '{{url("/admin/operations/errors/sna")}}'
-    })
-    .done(function(res) {
-        $('#errorTableDiv').html(res);
-    })
-    .fail(function(err) {
-        console.log(err);
-    })
-
-    });
-
-});
-    
-jQuery(function ($) {
-
-    $('#errorTable').DataTable();
->>>>>>> origin/master
 });
 </script>
 
