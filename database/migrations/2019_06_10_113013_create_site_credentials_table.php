@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateErrorsTable extends Migration
+class CreateSiteCredentialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,15 @@ class CreateErrorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('errors', function (Blueprint $table) {
+        Schema::create('site_credentials', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type');
-            $table->string('name');
-            $table->string('server');
-            $table->string('description');
-            $table->integer('user_id')->unsigned();
+            $table->string('site_url');
+            $table->string('site_port');
+            $table->string('login');
+            $table->string('password');
+            $table->string('remarks');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
@@ -31,6 +33,6 @@ class CreateErrorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('errors');
+        Schema::dropIfExists('site_credentials');
     }
 }

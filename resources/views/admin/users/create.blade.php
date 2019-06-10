@@ -4,6 +4,7 @@
 
 <h1 class="text-center mb-2">Create User</h1>
 
+@include('includes/form_error')
 
 @if($loggedUser->role!="user")
 {!!Form::open(['method'=>'post','action'=>'AdminUsersController@store'])!!}
@@ -39,7 +40,5 @@
 @else
 <h2 class="alert alert-danger text-center">You don't have permissions to create users</h2>
 @endif
-
-@include('includes/form_error')
 
 @endsection

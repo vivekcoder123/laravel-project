@@ -28,7 +28,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('homepage') }}">
-                    HomePage
+                    Homepage
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -60,8 +60,7 @@
 
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a href="{{route('admin.posts.index')}}" class="dropdown-item">All Posts</a>
-                                    <a href="{{route('admin.users.index')}}" class="dropdown-item">All Users</a>
+                                    <a href="{{route('homepage')}}" class="dropdown-item">Homepage</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -131,8 +130,39 @@
           <li>
             <a href="{{route('admin.operations')}}">Operations</a>
           </li>
+          <li class="sidebar-dropdown">
+            <a href="#">Licenses</a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="{{route('admin.licenses.create')}}">License Input Page
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('admin.licenses.index')}}">View All Licenses</a>
+                </li>
+                <li>
+                  <a href="{{route('admin.licenses.graph')}}">Licenses Graph</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">Site Credentials</a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="{{route('admin.site-credentials.create')}}">Create Site Credentials
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('admin.site-credentials.index')}}">View All Site Credentials</a>
+                </li>
+              </ul>
+            </div>
+          </li>
           <li>
-            <a href="{{route('admin.licenseHistory')}}">License History</a>
+            <a href="{{route('admin.errors')}}">Errors</a>
           </li>
         </ul>
       </div>

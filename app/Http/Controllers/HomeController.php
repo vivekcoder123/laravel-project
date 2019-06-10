@@ -38,20 +38,5 @@ class HomeController extends Controller
 
         return view('admin.index',compact('users_count','posts_count'));
     }
-
-    public function licenseHistory(){
-
-        $licenseHistory  =  Charts::create('bar', 'highcharts')
-                    ->title('License History')
-                    ->labels(['2018-19', '2017-18', '2016-17','2015-16'])
-                    ->values([100,150,200,400])
-                    ->elementLabel('Starting And Ending Date')
-                    ->yAxisTitle("# Of Licenses")
-                    ->dimensions(1000,500)
-                    ->responsive(true);
-
-        return view('admin.license_history.index',compact('licenseHistory'));
-
-    }
-
+    
 }

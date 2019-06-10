@@ -4,16 +4,16 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class License extends Model
+class SiteCredentials extends Model
 {
     protected $fillable=[
-    	'license_id',
-    	'start_date',
-    	'end_date',
-    	'number_of_licenses',
-    	'software_name',
-    	'type_of_license',
-    	'user_id'
+		'type',
+	    'site_url',
+	    'site_port',
+	    'login',
+	    'password',
+	    'remarks',
+	    'user_id'
     ];
 
     public function user(){

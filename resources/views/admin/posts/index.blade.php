@@ -42,7 +42,7 @@
         <td>{{Str::limit($post->body,100)}}</td>
         <td>{{$post->created_at->diffForHumans()}}</td>
         <td>{{$post->updated_at->diffForHumans()}}</td>
-        @if((Auth::user()->id==$post->user->id) || (Auth::user()->role=="site-admin") || (Auth::user()->role=="org-admin" && $post->user->role!="site-admin"))
+        @if((Auth::user()->id==$post->user->id) || (Auth::user()->role=="site-admin") || (Auth::user()->role=="org-admin" && $post->user->role=="user"))
         <td><a href="{{route('admin.posts.edit',$post->id)}}" class="btn btn-primary">Edit</a></td>
         <td>
         {!!Form::open(['method'=>'DELETE','action'=>['AdminPostsController@destroy',$post->id]])!!}
