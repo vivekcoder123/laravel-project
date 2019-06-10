@@ -120,6 +120,19 @@ class AdminOperationsController extends Controller
         $system_error=Error::where('type','System Error')->count();
         $space_not_available=Error::where('type','Space not available')->count();
 
+        
+
+        return view('admin.operations.index',compact('pie','allOperations'));
+
+    }
+
+    public function errors(){
+
+        $allErrors=Error::all();
+        $failed=Error::where('type','Failed')->count();
+        $system_error=Error::where('type','System Error')->count();
+        $space_not_available=Error::where('type','Space not available')->count();
+
         $pieE  =  Charts::create('pie', 'highcharts')
                     ->title('Errors')
                     ->labels(['Failed', 'System Error', 'Space not available'])

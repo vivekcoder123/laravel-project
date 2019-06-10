@@ -8,6 +8,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                 {!!$pie->html() !!}
+<<<<<<< HEAD
                 </div>
             </div>
         </div>
@@ -20,6 +21,9 @@
         <div class="col-12">
             <h4 class="alert alert-info my-4 text-center">List Format Of All Operations</h4>
             <div id="operationTableDiv">
+=======
+                <div id="operationTableDiv">
+>>>>>>> origin/master
                 <table class="table table-bordered table-striped" id="operationTable">
                     <thead>
                         <tr>
@@ -43,6 +47,12 @@
                     </tbody>
                 </table>
                 </div>
+<<<<<<< HEAD
+=======
+                </div>
+                </div>
+            </div>
+>>>>>>> origin/master
         </div>
     </div>
 </div>
@@ -83,8 +93,11 @@ chart.render();
 <script type="text/javascript">
     $(document).ready(function(){
 
+<<<<<<< HEAD
     $(".canvasjs-chart-credit").hide();
 
+=======
+>>>>>>> origin/master
     $(".highcharts-color-0").click(function(){
 
         $.ajax({
@@ -123,7 +136,11 @@ chart.render();
     
 jQuery(function ($) {
 
+<<<<<<< HEAD
     $('#operationTable').DataTable();
+=======
+    $('#errorTable').DataTable();
+>>>>>>> origin/master
 });
 </script>
 
