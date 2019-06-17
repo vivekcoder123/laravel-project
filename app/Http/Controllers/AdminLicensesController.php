@@ -107,24 +107,19 @@ class AdminLicensesController extends Controller
 
     $used_licenses = License::where('end_date','<',now())->get();
     $valid_licenses = License::where('end_date','>=',now())->get();
-    $line1 = Charts::multiDatabase('line', 'highcharts')
-    ->dataset('valid_licenses',$valid_licenses)
-    ->dataset('used_licenses',$used_licenses)
-    
-    ->title("Monthly Used Licenses")
+    $line1 = Charts::database($valid_licenses,'line', 'highcharts')  
+    ->title("Valid Licenses")
     ->dimensions(1000, 500)
-    ->responsive(true)
-    ->groupBy('end_date')
-    ->groupBy('end_date');
+    ->responsive(true);
 
     
     $line2 = Charts::database($used_licenses,'line', 'highcharts')
-    ->title("Monthly Valid Licenses")
+    ->title("Used Licenses")
+    ->colors(["red"])
     ->dimensions(1000, 500)
-    ->responsive(true)
-    ->groupBy('end_date');
-
+    ->responsive(true);
 
     return view('admin.licenses.graphs',compact('line1','line2'));
+
     }
 }

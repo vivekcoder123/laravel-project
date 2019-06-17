@@ -15,9 +15,16 @@ class CreateOperationsTable extends Migration
     {
         Schema::create('operations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('type');
+            $table->string('service_type');
+            $table->dateTime('start_time');
+            $table->dateTime('end_time');
+            $table->string('size');
+            $table->string('status');
+            $table->string('duration');
+            $table->dateTime('last_success_on');
+            $table->string('policy');
+            $table->string('server');
             $table->integer('user_id')->unsigned();
-            $table->string('server_id');
             $table->string('license_id');
             $table->timestamps();
         });

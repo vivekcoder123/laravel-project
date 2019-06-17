@@ -41,6 +41,7 @@
                 </tr>
             </thead>
             <tbody>
+                @if($operations)
                 @foreach($operations as $operation)
                 <tr>
                     <td>{{$operation->server}}</td>
@@ -54,6 +55,7 @@
                     <td>{{$operation->policy}}</td>
                 </tr>
                 @endforeach
+                @endif
             </tbody>
         </table>
         </div>
