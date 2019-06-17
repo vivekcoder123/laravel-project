@@ -32,13 +32,19 @@ class DatabaseSeeder extends Seeder
         //     ]);
         // }
 
-       // for($i = 0; $i < 40; $i++) {
-       //  App\License::create([
-       //      'license_number' => $faker->numberBetween(1,1000),
-       //      'start_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
-       //      'end_date' =>$faker->date($format = 'Y-m-d', $max = 'now'),
-       //      'user_id' => $faker->randomElement([1,2,7,8])
-       //  ]);
-       //  }
+       for($i = 0; $i < 40; $i++) {
+        App\License::create([
+            'license_id' => $faker->numberBetween(1,1000),
+            'start_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+            'end_date' =>$faker->date($format = 'Y-m-d',$min='2019-01-01', $max = 'now'),
+            'number_of_licenses' =>$faker->numberBetween(1,1000),
+            'software_name' =>$faker->name,
+            'type_of_license' =>$faker->randomElement(['server','agent']),
+            'operation_type' =>$faker->randomElement(['failed','errors','missed','successful']),
+            'created_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
+            'updated_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
+            'user_id' => $faker->randomElement([1,2,7,8])
+        ]);
+        }
     }
 }

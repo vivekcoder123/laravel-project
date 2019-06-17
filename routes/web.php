@@ -4,8 +4,14 @@ Route::get('/', 'HomeController@index')->name('homepage');
 
 Route::group(['middleware'=>['auth']],function(){
 
+Route::get('/admin/main-status','AdminMainStatusController@mainStatus')->name('admin.mainStatus');
+
+Route::get('/admin/main-status/{type}','AdminMainStatusController@typeData');
+
 Route::get('/admin','HomeController@admin');
+
 Route::get('/admin/operations','AdminOperationsController@operations')->name('admin.operations');
+
 Route::get('/admin/operations/{type}','AdminOperationsController@operationDetail')
 ->name('admin.operationDetail');
 
@@ -13,17 +19,19 @@ Route::get('/admin/errors','AdminErrorsController@errors')->name('admin.errors')
 
 Route::get('/admin/errors/{type}','AdminErrorsController@errorDetail')->name('admin.errorDetail');
 
-Route::resource('/admin/licenses','AdminLicensesController',['names'=>[
+Route::get('/admin/licenses','AdminLicensesController@index')->name('admin.licenses.index');
 
+Route::get('/admin/licenses/create','AdminLicensesController@create')->name('admin.licenses.create');
+
+Route::get('/admin/licenses/graph','AdminLicensesController@graph')->name('admin.licenses.graph');
+
+Route::resource('/admin/licenses','AdminLicensesController',['names'=>[
   'index'=>'admin.licenses.index',
-  'store'=>'admin.licensens.store',
+  'store'=>'admin.licenses.store',
   'create'=>'admin.licenses.create',
   'edit'=>'admin.licenses.edit',
   'destroy'=>'admin.licenses.destroy'
-
- ]]);
-
-Route::get('/admin/licenses/graph','AdminLicensesController@graph')->name('admin.licenses.graph');
+]]);
 
 Route::resource('/admin/posts','AdminPostsController',['names'=>[
 

@@ -18,6 +18,7 @@ class CreateOperationsTable extends Migration
             $table->string('type');
             $table->integer('user_id')->unsigned();
             $table->string('server_id');
+            $table->string('license_id');
             $table->timestamps();
         });
     }

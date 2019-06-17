@@ -95,6 +95,9 @@
 
       <div class="sidebar-menu">
         <ul>
+          <li>
+            <a href="{{route('admin.mainStatus')}}">Main Status</a>
+          </li>
           <li class="sidebar-dropdown">
             <a href="#">
               <span>Posts</span>
@@ -126,9 +129,6 @@
                 </li>
               </ul>
             </div>
-          </li>
-          <li>
-            <a href="{{route('admin.operations')}}">Operations</a>
           </li>
           <li class="sidebar-dropdown">
             <a href="#">Licenses</a>

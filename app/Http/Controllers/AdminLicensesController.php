@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Charts;
 use App\License;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class AdminLicensesController extends Controller
      */
     public function index()
     {
-        $licenses=License::all();
+        $licenses=License::orderBy('id','desc')->get();
         return view('admin.licenses.index',compact('licenses'));
     }
 
@@ -50,6 +51,7 @@ class AdminLicensesController extends Controller
         ]);
         $input=$request->all();
         $user_id=Auth::User()->id;
+        $input['operation_type']='sucessful'; 
         $input['user_id']=$user_id;
         License::Create($input);
         $request->session()->flash('created_license','Saved successfully');
@@ -102,6 +104,27 @@ class AdminLicensesController extends Controller
     }
 
     public function graph(){
-        return view('admin.licenses.graph');
+
+    $used_licenses = License::where('end_date','<',now())->get();
+    $valid_licenses = License::where('end_date','>=',now())->get();
+    $line1 = Charts::multiDatabase('line', 'highcharts')
+    ->dataset('valid_licenses',$valid_licenses)
+    ->dataset('used_licenses',$used_licenses)
+    
+    ->title("Monthly Used Licenses")
+    ->dimensions(1000, 500)
+    ->responsive(true)
+    ->groupBy('end_date')
+    ->groupBy('end_date');
+
+    
+    $line2 = Charts::database($used_licenses,'line', 'highcharts')
+    ->title("Monthly Valid Licenses")
+    ->dimensions(1000, 500)
+    ->responsive(true)
+    ->groupBy('end_date');
+
+
+    return view('admin.licenses.graphs',compact('line1','line2'));
     }
 }

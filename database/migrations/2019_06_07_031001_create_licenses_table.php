@@ -21,6 +21,7 @@ class CreateLicensesTable extends Migration
             $table->integer('number_of_licenses');
             $table->string('software_name');
             $table->string('type_of_license');
+            $table->string('operation_type');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
         });

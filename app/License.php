@@ -13,7 +13,8 @@ class License extends Model
     	'number_of_licenses',
     	'software_name',
     	'type_of_license',
-    	'user_id'
+    	'user_id',
+        'operation_type'
     ];
 
     public function user(){
