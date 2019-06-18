@@ -105,14 +105,14 @@ class AdminLicensesController extends Controller
 
     public function graph(){
 
-    $used_licenses = License::where('end_date','<',now())->get();
+    $used_licenses = License::where('end_date','<',now())->groupBy('end_date');
+    var_dump($used_licenses);
     $valid_licenses = License::where('end_date','>=',now())->get();
     $line1 = Charts::database($valid_licenses,'line', 'highcharts')  
     ->title("Valid Licenses")
     ->dimensions(1000, 500)
     ->responsive(true);
 
-    
     $line2 = Charts::database($used_licenses,'line', 'highcharts')
     ->title("Used Licenses")
     ->colors(["red"])

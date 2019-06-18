@@ -45,7 +45,7 @@
                 @foreach($operations as $operation)
                 <tr>
                     <td>{{$operation->server}}</td>
-                    <td>{{$operation->service_type_name}}</td>
+                    <td>{{$operation->service_type}}</td>
                     <td>{{$operation->start_time}}</td>
                     <td>{{$operation->end_time}}</td>
                     <td>{{$operation->size}}</td>

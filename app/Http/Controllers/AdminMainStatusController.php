@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 class AdminMainStatusController extends Controller
 {
     public function mainStatus(){
-    	$used_licenses=License::where('end_date','<',now())->count();
-    	$unused_licenses=License::where('end_date','>=',now())->count();
+        $total_liceses=License::all()->sum('number_of_licenses');
+    	$used_licenses=round($total_liceses*0.4);
+    	$unused_licenses=round($total_liceses*0.6);
     	$pie=Charts::create('pie', 'highcharts')
                     ->title('Licenses')
                     ->labels(['Used', 'Unused'])
@@ -57,7 +58,7 @@ DELIMETER;
             $result.=<<<DELIMETER
             		<tr>
                     <td>{$operation->server}</td>
-                    <td>{$operation->service_type_name}</td>
+                    <td>{$operation->service_type}</td>
                     <td>{$operation->start_time}</td>
                     <td>{$operation->end_time}</td>
                     <td>{$operation->size}</td>

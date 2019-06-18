@@ -27,7 +27,6 @@
                             <th>Name</th>
                             <th>Server</th>
                             <th>Description</th>
-                            <th>User</th>
                             <th>Created</th>
                         </tr>
                     </thead>
@@ -38,7 +37,6 @@
                             <td>{{$error->name}}</td>
                             <td>{{$error->server}}</td>
                             <td>{{$error->description}}</td>
-                            <td>{{$error->user->name}}</td>
                             <td>{{$error->created_at->diffForHumans()}}</td>
                         </tr>
                     @endforeach
