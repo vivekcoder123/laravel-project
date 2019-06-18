@@ -2,18 +2,33 @@
 
 @section('content')
 
-{!! $line1->html() !!}
-
-{!! $line2->html() !!}
+<div id="chartContainer" style="height: 400px; width: 100%;"></div>
 
 @endsection
 
 @section('extra_js')
 
-{!! Charts::scripts() !!}
+<script>
+window.onload = function () {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	title: {
+		text: "Date"
+	},
+	axisY: {
+		title: "Number Of Licenses Used",
+		includeZero: false
+	},
+	data: [{
+		type: "stepLine",
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+}
+</script>
 
-{!! $line1->script() !!}
-
-{!! $line2->script() !!}
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 @endsection
